@@ -47,6 +47,24 @@ Most business logic lives in `actions/`:
 
 This makes the app feel close to a thin-client architecture: UI components collect input, while trusted operations happen on the server.
 
+## Tool Selection and Rationale
+
+The stack is not random. Each major tool is covering a specific engineering responsibility:
+
+- `Next.js`: application shell, routing, server rendering, server actions, and API endpoints
+- `React`: UI composition and client-side interaction
+- `Clerk`: auth UI, sessions, and route protection
+- `Prisma` + `PostgreSQL`: relational persistence and schema management
+- `Arcjet`: request protection and rate limiting
+- `Gemini`: receipt extraction and generated insights
+- `Inngest`: scheduled and background workflows
+- `Resend` + React Email: email delivery and templating
+- `Tailwind` + Radix UI: styling and accessible primitives
+
+The practical reason this matters is ownership. If an issue appears in auth, billing-like record consistency, charts, AI parsing, or email delivery, the tool boundary tells you where to debug first.
+
+For a full tool-by-tool breakdown, see `docs/TOOLS_AND_SERVICES.md`.
+
 ## Data Model Review
 
 ### User

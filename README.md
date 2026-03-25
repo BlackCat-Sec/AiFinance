@@ -25,6 +25,30 @@ Full-stack personal finance platform built with Next.js App Router, Clerk, Prism
 - `Resend` + React Email for outbound email
 - `Tailwind CSS`, Radix UI, shadcn-style components, Recharts
 
+## Tooling Breakdown
+
+The project depends on several external tools and libraries. The important point for a user or maintainer is not just what they are, but what responsibility each one owns in this codebase.
+
+| Tool | How it is used here | Why it is used |
+| --- | --- | --- |
+| `Next.js` | App Router pages, layouts, API routes, and server actions | Keeps frontend and backend logic in one framework |
+| `React` | UI components, client-side forms, charts, and interactions | Standard component model for the app UI |
+| `Clerk` | Sign-in/sign-up UI, session handling, protected routes, user identity | Offloads authentication and user session management |
+| `Prisma` | Database queries, schema definition, migrations, client generation | Centralizes data access and keeps schema changes manageable |
+| `PostgreSQL` | Persistent storage for users, accounts, budgets, and transactions | Relational data fits the financial records model well |
+| `Arcjet` | Middleware protection, bot detection, and rate limiting on sensitive actions | Reduces abuse and protects public-facing routes/actions |
+| `Gemini` | Receipt parsing and monthly insight generation | Handles the two AI-specific parts of the product |
+| `Inngest` | Cron-like scheduled jobs and recurring background workflows | Keeps recurring transactions, alerts, and reports out of request-time logic |
+| `Resend` | Outbound email delivery | Sends reports and budget alerts reliably |
+| `React Email` | Email template rendering | Keeps email content versioned in code as React components |
+| `Tailwind CSS` | Layout, spacing, colors, utility styling | Fast UI iteration without a large custom CSS system |
+| `Radix UI` | Accessible primitives such as dialog, select, popover, switch | Provides stable low-level UI building blocks |
+| `Recharts` | Charts on dashboard/account pages | Covers the financial visualization layer |
+| `React Hook Form` + `Zod` | Transaction/account form state and validation | Keeps form validation explicit and predictable |
+| `Sonner` | Toast notifications | Lightweight feedback for create/update actions |
+
+For a longer tool-by-tool explanation, see [`docs/TOOLS_AND_SERVICES.md`](docs/TOOLS_AND_SERVICES.md).
+
 ## Project Structure
 
 ```text
@@ -150,6 +174,8 @@ Important:
 ## Extra Documentation
 
 See [`docs/PROJECT_ANALYSIS.md`](docs/PROJECT_ANALYSIS.md) for a deeper architecture walkthrough and implementation notes.
+
+See [`docs/TOOLS_AND_SERVICES.md`](docs/TOOLS_AND_SERVICES.md) for a detailed explanation of each major tool, where it appears in the codebase, why it exists, and what a user needs to know before configuring it.
 
 ---
 Reference tutorial inspiration: https://youtu.be/egS6fnZAdzk
